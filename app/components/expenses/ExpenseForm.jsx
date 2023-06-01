@@ -6,6 +6,7 @@ import {
   useNavigation,
   useParams,
 } from '@remix-run/react';
+import ValidationErrors from '~/components/util/ValidationErrors';
 
 function ExpenseForm() {
   const today = new Date().toISOString().slice(0, 10); // yields something like 2023-09-10
@@ -89,13 +90,7 @@ function ExpenseForm() {
           />
         </p>
       </div>
-      {validationErrors && (
-        <ul>
-          {Object.values(validationErrors).map((error) => (
-            <li key={error}>{error}</li>
-          ))}
-        </ul>
-      )}
+      <ValidationErrors validationErrors={validationErrors} />
       <div className="form-actions">
         <button disabled={isSubmitting}>
           {isSubmitting ? 'Saving...' : 'Save Expense'}

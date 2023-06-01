@@ -1,10 +1,17 @@
-import { Form, Link, useSearchParams, useNavigation } from '@remix-run/react';
+import {
+  Form,
+  Link,
+  useSearchParams,
+  useNavigation,
+  useActionData,
+} from '@remix-run/react';
 import { FaLock, FaUserPlus } from 'react-icons/fa';
+import ValidationErrors from '~/components/util/ValidationErrors';
 
 function AuthForm() {
   const [searchParams] = useSearchParams();
   const navigation = useNavigation();
-
+  const validationErrors = useActionData();
   const authMode = searchParams.get('mode') || 'login';
 
   const submitBtnCaption = authMode === 'login' ? 'Login' : 'Create User';
@@ -26,6 +33,7 @@ function AuthForm() {
         <label htmlFor="password">Password</label>
         <input type="password" id="password" name="password" minLength={7} />
       </p>
+      <ValidationErrors validationErrors={validationErrors} />
       <div className="form-actions">
         <button disabled={isSubmitting}>
           {isSubmitting ? 'Authenticating...' : submitBtnCaption}
