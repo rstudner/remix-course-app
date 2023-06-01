@@ -24,6 +24,37 @@ async function createUserSession(userId, redirectPath = '/expenses') {
   });
 }
 
+export async function getUserFromSession(request) {
+  const session = await sessionStorage.getSession(
+    request.headers.get('Cookie'),
+  );
+
+  if (!session) {
+    return null;
+  }
+
+  const userId = session.get('userId');
+  if (!userId) {
+    return null;
+  }
+
+  return userId;
+}
+
+export async function destroyUserSession(request) {
+  const session = await sessionStorage.getSession(
+    request.headers.get('Cookie'),
+  );
+
+  if (!session) {
+    return null;
+  }
+  return redirect('/', {
+    headers: {
+      'Set-Cookie': await sessionStorage.destroySession(session),
+    },
+  });
+}
 export async function signup({ email, password }) {
   const existingUser = await prisma.user.findFirst({ where: { email } });
   if (existingUser) {
