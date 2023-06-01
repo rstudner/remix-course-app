@@ -19,16 +19,18 @@ function ExpensesHeader() {
           </li>
         </ul>
       </nav>
-      {userId && (
-        <Form method="post" id="logout-form" action="/logout">
-          <button className="cta-alt">Logout</button>
-        </Form>
-      )}
-      {!userId && (
-        <Link to="/auth?mode=login" className="cta">
-          Login
-        </Link>
-      )}
+      <nav id="cta-nav">
+        {userId && (
+          <Form method="post" id="logout-form" action="/logout">
+            <button className="cta-alt">Logout</button>
+          </Form>
+        )}
+        {!userId && (
+          <Link to="/auth?mode=login" className="cta">
+            Login
+          </Link>
+        )}
+      </nav>
     </header>
   );
 }
