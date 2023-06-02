@@ -1,5 +1,6 @@
 /** @type {import('@remix-run/dev').AppConfig} */
 module.exports = {
+  ignoredRouteFiles: ['**/.*', '**/*.css'],
   future: {
     v2_routeConvention: true,
     v2_errorBoundary: true,

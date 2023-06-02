@@ -21,7 +21,7 @@ export const meta = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-function Document({ title, children }) {
+function Document({ title, children }: any) {
   const matches = useMatches();
   const disableJSPages = matches.some((match) => match.handle?.disableJS);
   return (
@@ -33,7 +33,7 @@ function Document({ title, children }) {
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"
-          crossOrigin="true"
+          crossOrigin="anonymous"
         />
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap"
@@ -59,7 +59,7 @@ export default function App() {
 }
 
 export function ErrorBoundary() {
-  const error = useRouteError();
+  const error: any = useRouteError();
 
   // when true, this is what used to go to `CatchBoundary`
   if (isRouteErrorResponse(error)) {
