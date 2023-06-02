@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from '@remix-run/react';
+import { useNavigate } from '@remix-run/react';
 
 import ExpenseForm from '~/components/expenses/ExpenseForm';
 import Modal from '~/components/util/Modal';
@@ -44,4 +44,14 @@ export async function action({ params, request }) {
     await deleteExpense(expenseId);
     return { deletedId: expenseId };
   }
+}
+
+export function meta({ params, location, data, parentsData }) {
+  const expense = parentsData['routes/_expenses.expenses'].find(
+    (expense) => expense.id === params.id,
+  );
+  return {
+    title: expense.title,
+    description: 'Update expense.',
+  };
 }
