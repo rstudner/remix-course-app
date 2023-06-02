@@ -13,7 +13,7 @@ function calculateSummaryStatistics(expenses) {
 function ExpenseStatistics({ expenses }) {
   const { minAmount, maxAmount, sum, mean } = useMemo(
     () => calculateSummaryStatistics(expenses),
-    [expenses]
+    [expenses],
   );
 
   return (

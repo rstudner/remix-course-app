@@ -32,9 +32,9 @@ export async function action({ request }) {
   try {
     validateExpenseInput(expenseData);
   } catch (error) {
-    return error;
+    return error; // this is a response
   }
 
   await addExpense(expenseData, userId);
-  return redirect('/expenses');
+  return redirect('/expenses'); // this is a response
 }

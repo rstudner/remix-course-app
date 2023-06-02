@@ -3,12 +3,11 @@ import authStyles from '~/styles/auth.css';
 import type { ActionArgs } from '@remix-run/node';
 import { validateCredentials } from '~/data/validation.server';
 import { login, signup } from '~/data/auth.server';
-import { redirect } from '@remix-run/node';
 
-interface AuthFormData {
-  email: string;
-  password: string;
-}
+// interface AuthFormData {
+//   email: string;
+//   password: string;
+// }
 export default function Index() {
   return <AuthForm />;
 }
