@@ -40,3 +40,16 @@ export async function loader({ request }) {
   const expenses = await getExpenses(userId);
   return expenses; //return json(expenses); -- this is a RESPONSE
 }
+
+export function meta() {
+  return {
+    title: 'Expenses',
+    description: 'List of expenses.',
+  };
+}
+
+export function headers({ parentHeaders }) {
+  return {
+    'Cache-Control': parentHeaders.get('Cache-Control'),
+  };
+}

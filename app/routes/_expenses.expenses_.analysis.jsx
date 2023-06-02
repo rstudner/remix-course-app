@@ -21,3 +21,9 @@ export async function loader({ request }) {
 
   return await getExpenses(userId);
 }
+
+export function headers({ parentHeaders }) {
+  return {
+    'Cache-Control': parentHeaders.get('Cache-Control'),
+  };
+}

@@ -39,4 +39,15 @@ export default function PricingPage() {
   );
 }
 
-export function meta() {}
+export function meta() {
+  return {
+    title: 'Pricing',
+    description: 'See our pricing plans.',
+  };
+}
+
+export function headers({ parentHeaders }) {
+  return {
+    'Cache-Control': parentHeaders.get('Cache-Control'),
+  };
+}

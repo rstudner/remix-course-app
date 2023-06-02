@@ -38,3 +38,9 @@ export async function action({ request }) {
   await addExpense(expenseData, userId);
   return redirect('/expenses'); // this is a response
 }
+
+export function headers({ parentHeaders }) {
+  return {
+    'Cache-Control': parentHeaders.get('Cache-Control'),
+  };
+}

@@ -55,3 +55,9 @@ export function meta({ params, location, data, parentsData }) {
     description: 'Update expense.',
   };
 }
+
+export function headers({ parentHeaders }) {
+  return {
+    'Cache-Control': parentHeaders.get('Cache-Control'),
+  };
+}
